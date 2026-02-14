@@ -11,6 +11,8 @@ const CipherForm = (props) => {
     const [result, setResult] = useState("");
     const [prevResult, setPrevResult] = useState(""); // previous result for invalid alphabet
     const [copyAlert, setCopyAlert] = useState(false);
+    const [isEdited, setIsEdited] = useState(false);
+    const [isEditedKey, setIsEditedKey] = useState(false);
 
     // Helper: check for duplicate characters (case-insensitive)
     const hasDuplicates = (str) => {
@@ -58,14 +60,14 @@ const CipherForm = (props) => {
                 {/* Input Section */}
                 <div className="col-md-4 mb-3">
                     <label className="form-label fs-4">{mode === 'encode' ? 'Plain Text' : 'Cipher Text'}</label>
-                    <textarea className="form-control" rows="8" value={text} onChange={e => setText(e.target.value)} placeholder="Enter text here..."></textarea>
+                    <textarea className="form-control" rows="8" value={text} onChange={(e) => { setText(e.target.value); setIsEdited(true); }} onFocus={(e) => { if (!isEdited) e.target.select(); }} placeholder="Enter text here..."></textarea>
                 </div>
 
                 {/* Key / Mode / Alphabet Section */}
                 <div className="col-md-4 mb-3 d-flex flex-column justify-content-between">
                     <div>
                         <label className="form-label fs-4">Key</label>
-                        <input type="text" className="form-control mb-3" value={key} onChange={e => setKey(e.target.value)} placeholder="Enter key..."></input>
+                        <input type="text" className="form-control mb-3" value={key} onChange={(e) => { setKey(e.target.value); setIsEditedKey(true); }} onFocus={(e) => { if (!isEditedKey) e.target.select(); }} placeholder="Enter key..."></input>
 
                         <label className="form-label">Key Mode</label>
                         <div className="d-flex mb-3">
