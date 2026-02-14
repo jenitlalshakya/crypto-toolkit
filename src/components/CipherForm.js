@@ -10,6 +10,7 @@ const CipherForm = (props) => {
     const [mode, setMode] = useState("encode"); // encode or decode
     const [result, setResult] = useState("");
     const [prevResult, setPrevResult] = useState(""); // previous result for invalid alphabet
+    const [copyAlert, setCopyAlert] = useState(false);
 
     // Helper: check for duplicate characters (case-insensitive)
     const hasDuplicates = (str) => {
@@ -41,7 +42,14 @@ const CipherForm = (props) => {
     }, [text, key, mode, keyMode, alphabet, prevResult]);
 
     // Copy result
-    const handleCopy = () => { navigator.clipboard.writeText(result); alert("Copied to clipboard!"); };
+    const handleCopy = () => {
+        navigator.clipboard.writeText(result);
+        setCopyAlert(true);
+
+        setTimeout(() => {
+            setCopyAlert(false);
+        }, 1000);
+    };
 
     return (
         <div className="container my-4">
