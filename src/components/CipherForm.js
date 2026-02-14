@@ -90,6 +90,12 @@ const CipherForm = (props) => {
                     <textarea className="form-control" rows="8" value={result} readOnly placeholder="Result will appear here..."></textarea>
                     <div className="text-end mt-2"><button className="btn btn-primary" onClick={handleCopy}>Copy</button></div>
                 </div>
+
+                {copyAlert && (
+                    <div className="alert alert-success mt-2 py-2 text-center">
+                        Copied to clipboard!
+                    </div>
+                )}
             </div>
         </div>
     );
