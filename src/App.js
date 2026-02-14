@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import VigenerePage from "./pages/VigenerePage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [mode, setMode] = useState("light");
+
+    const toggleMode = () => {
+        if (mode === "light") {
+            setMode("dark");
+            document.body.style.backgroundColor = "#121212";
+            document.body.style.color = "white";
+        } else {
+            setMode("light");
+            document.body.style.backgroundColor = "white";
+            document.body.style.color = "black";
+        }
+    };
+
+    return (
+        <Router>
+            <Navbar title="Crypto ToolKit" mode={mode} toggleMode={toggleMode} />
+
+            <Routes>
+                <Route path="/" element={<VigenerePage />} />
+                <Route path="/vigenere" element={<VigenerePage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
