@@ -89,7 +89,7 @@ const CipherForm = (props) => {
                 {/* Output Section */}
                 <div className="col-md-4 mb-3">
                     <label className="form-label fs-4">{mode === 'encode' ? 'Cipher Text' : 'Plain Text'}</label>
-                    <textarea className="form-control" rows="8" value={result} readOnly placeholder="Result will appear here..."></textarea>
+                    <textarea className="form-control" rows="8" value={result} onFocus={(e) => e.target.select()} readOnly placeholder="Result will appear here..."></textarea>
                     <div className="text-end mt-2"><button className="btn btn-primary" onClick={handleCopy}>Copy</button></div>
                 </div>
 
