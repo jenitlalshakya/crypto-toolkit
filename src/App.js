@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import VigenerePage from "./pages/VigenerePage";
+import Footer from './components/Footer';
 
 function App() {
     const [mode, setMode] = useState("light");
@@ -22,11 +23,13 @@ function App() {
     return (
         <Router basename='/cipher-toolkit'>
             <Navbar title="Cipher ToolKit" mode={mode} toggleMode={toggleMode} />
-
+        
             <Routes>
                 <Route path="/" element={<VigenerePage />} />
                 <Route path="/vigenere" element={<VigenerePage />} />
             </Routes>
+
+            <Footer />
         </Router>
     );
 }

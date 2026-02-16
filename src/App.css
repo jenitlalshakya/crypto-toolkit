@@ -16,3 +16,58 @@
   /* stays blue only on hover */
   color: white !important;
 }
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.github-link:hover,
+.github-link:focus-visible {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-purple);
+  box-shadow: var(--shadow-glow);
+  outline: none;
+}
+
+.github-link:focus-visible {
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 4px;
+}
+
+.github-icon {
+  font-size: 1.5rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  color: var(--text-primary);
+}
+
+.github-link:hover .github-icon,
+.github-link:focus-visible .github-icon {
+  transform: scale(1.1) rotate(5deg);
+  color: var(--primary-purple);
+}
+
+.github-text {
+  font-weight: 600;
+}
